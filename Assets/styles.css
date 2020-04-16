@@ -9,3 +9,20 @@ div {
 .fiveDay {
     margin: 10px;
 } 
+
+#wIcon {
+    vertical-align: middle;
+}
+
+#wCity {
+    vertical-align: middle;
+    display: inline;
+}
+
+#wUVIndex {
+    display: inline;
+}
+
+#wUVIndex1 {
+    display: inline-block;
+}
