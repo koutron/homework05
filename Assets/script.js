@@ -127,7 +127,7 @@ function renderFiveDay(data) {
     for (var i = 0; i < fiveDayArr.length; i++) {
         
         var divEl = $("<div>");
-        divEl.css("margin", "0px 13px 0px 13px").css("padding", "5px").css("border", "2px solid lightgray");
+        divEl.css("margin", "0px 26px 0px 0px").css("padding", "5px").css("border", "2px solid lightgray");
 
 
         var dateEl = $("<h6>");
