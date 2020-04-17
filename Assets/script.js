@@ -15,7 +15,7 @@ $("#submitBtn").on("click", function () {
     }).then(function (response) {
         renderWeather(response);
 
-        var uviURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+        var uviURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
         $.ajax({
             url: uviURL,
             method: "GET"
@@ -58,7 +58,7 @@ $("#cityList").on("click", function (event) {
     }).then(function (response) {
         renderWeather(response);
 
-        var uviURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+        var uviURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
         $.ajax({
             url: uviURL,
             method: "GET"
@@ -81,6 +81,7 @@ $("#cityList").on("click", function (event) {
         url: fiveDayURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
         renderFiveDay(response);
     });
 
@@ -120,13 +121,13 @@ function renderIcon(condition){
 function renderFiveDay(data) {
 
     var fiveDayArr = getForecastForEachDay(data.list);
-    
     $(".fiveDay").text("");
     for (var i = 0; i < fiveDayArr.length; i++) {
         
         var divEl = $("<div>");
+        divEl.css("margin", "0px 40px 0px 0px");
 
-        var dateEl = $("<h5>");
+        var dateEl = $("<h6>");
         dateEl.text("Date: " + fiveDayArr[i].dt_txt.split(" ")[0]);
 
         var iconEl = $("<img>");
@@ -198,7 +199,7 @@ function renderLocalStorage() {
         }).then(function (response) {
             renderWeather(response);
 
-            var uviURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+            var uviURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
             $.ajax({
                 url: uviURL,
                 method: "GET"

@@ -1,9 +1,41 @@
-li {
-    margin: 20px;
+#header {
+    background-color: #383838;
+    text-align: center;
+    padding: 5px;
+    color: white;
 }
 
-div {
-    border: 1px solid black;
+.container {
+    border: 2px solid black;
+    margin-top: 100px;
+    padding: 0px;
+}
+
+form {
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px 10px 10px 10px;
+    text-align: center;
+}
+
+
+li {
+    margin: 10px;
+    border: 2px solid lightgray;
+}
+
+#weather{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid lightgray;
+}
+
+#fiveDayHeader {
+    margin: 5px;
+    padding: 5px;
 }
 
 .fiveDay {
@@ -24,5 +56,5 @@ div {
 }
 
 #wUVIndex1 {
-    display: inline-block;
+    display: inline;
 }
