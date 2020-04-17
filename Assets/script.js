@@ -100,7 +100,7 @@ function renderWeather(data) {
     $("#wCity").text("City: " + data.name + " " + "(" + newdate + ")");
     var tempF = (data.main.temp - 273.15) * 1.8 + 32;
     tempF = tempF.toFixed(2);
-    $("#wTemp").text("Temperature: " + tempF);
+    $("#wTemp").text("Temperature: " + tempF +" °F");
     $("#wHumidity").text("Humidity: " + data.main.humidity);
     $("#wWindSpeed").text("Wind Speed: " + data.wind.speed);
     renderIcon(data.weather[0].main);
