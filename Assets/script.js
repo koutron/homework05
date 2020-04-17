@@ -81,7 +81,6 @@ $("#cityList").on("click", function (event) {
         url: fiveDayURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
         renderFiveDay(response);
     });
 
@@ -125,7 +124,8 @@ function renderFiveDay(data) {
     for (var i = 0; i < fiveDayArr.length; i++) {
         
         var divEl = $("<div>");
-        divEl.css("margin", "0px 40px 0px 0px");
+        divEl.css("margin", "0px 25px 0px 0px").css("padding", "5px").css("border", "2px solid lightgray");
+
 
         var dateEl = $("<h6>");
         dateEl.text("Date: " + fiveDayArr[i].dt_txt.split(" ")[0]);
@@ -148,7 +148,6 @@ function renderFiveDay(data) {
 }
 
 function renderFiveDayIcons(condition, iconEl){
-    console.log(condition);
     switch(condition){
         case "Clear": iconEl.attr("src", "./Assets/images/sunny.png");
             break;
