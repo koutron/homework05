@@ -1,11 +1,11 @@
 var APIKey = "2f7549e8e6cdbfa114ce6f316998c493";
 
-renderLocalStorage();
+renderLocalStorage(); // If there is any city in local storage, load that city. 
 
 $("#submitBtn").on("click", function () {
     event.preventDefault();
     var cityName = $("#cityInput").val();
-    localStorage.setItem("city", cityName);
+    localStorage.setItem("city", cityName);  //Everytime a new city is submitted, the local storage updates to that latest city
     var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
     var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
 
@@ -21,7 +21,8 @@ $("#submitBtn").on("click", function () {
             method: "GET"
         }).then(function (response) {
             $("#wUVIndex1").text(response.value);
-    
+            
+            //UV Index Color Coding
             if(response.value >= 0 && response.value <= 2.99){
                 $("#wUVIndex1").css("background-color", "green");
             } else if(response.value >= 3 && response.value <= 5.99){
@@ -64,7 +65,7 @@ $("#cityList").on("click", function (event) {
             method: "GET"
         }).then(function (response) {
             $("#wUVIndex1").text(response.value);
-    
+            //UV Index Color Coding
             if(response.value >= 0 && response.value <= 2.99){
                 $("#wUVIndex1").css("background-color", "green");
             } else if(response.value >= 3 && response.value <= 5.99){
@@ -87,6 +88,8 @@ $("#cityList").on("click", function (event) {
 });
 
 function renderWeather(data) {
+
+    //Get current date
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
@@ -104,7 +107,7 @@ function renderWeather(data) {
 }
 
 function renderIcon(condition){
-    //I tried searching all over the US/World to see different condition results and only was able to find Clear, Clouds, and Rain.  The Thunderstorm is a guess.
+    //I tried searching all over the US/World to see different condition results and only was able to find Clear, Clouds, and Rain.  I added "Thunderstorm" as a guess.
     switch(condition){
         case "Clear": $("#wIcon").attr("src", "./Assets/images/sunny.png");
             break;
@@ -124,7 +127,7 @@ function renderFiveDay(data) {
     for (var i = 0; i < fiveDayArr.length; i++) {
         
         var divEl = $("<div>");
-        divEl.css("margin", "0px 25px 0px 0px").css("padding", "5px").css("border", "2px solid lightgray");
+        divEl.css("margin", "0px 13px 0px 13px").css("padding", "5px").css("border", "2px solid lightgray");
 
 
         var dateEl = $("<h6>");
@@ -160,7 +163,7 @@ function renderFiveDayIcons(condition, iconEl){
     }
 }
 
-function getForecastForEachDay(listOfForecasts) {
+function getForecastForEachDay(listOfForecasts) { //Mostly Gary's code with some minor modifications
     var currentDate = "";
     var forecastArray = [];
     for (var i = 0; i < listOfForecasts.length; i++) {
